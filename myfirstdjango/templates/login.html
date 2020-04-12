@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>登录</title>
+		<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+		<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="js/vue.js"></script>
+	</head>
+	<body>
+		
+		<div class="container">
+			<div class="row clearfix">
+				<div class="col-md-12 column">
+					<div class="col-md-12 column">
+								<div id="myCarousel" class="carousel slide">
+									<!-- 轮播（Carousel）指标 -->
+									<ol class="carousel-indicators">
+										<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+										<li data-target="#myCarousel" data-slide-to="1"></li>
+										<li data-target="#myCarousel" data-slide-to="2"></li>
+									</ol>   
+									<!-- 轮播（Carousel）项目 -->
+									<div class="carousel-inner">
+										{% load static %}
+										<div class="item active">
+											
+											<img src="{% static 'v3/4.jpg' %}" alt="First slide">
+											<div class="carousel-caption">标题 1</div>
+										</div>
+										<div class="item">
+											<img src="{% static 'v3/5.jpg' %}" alt="Second slide">
+											<div class="carousel-caption">标题 2</div>
+										</div>
+										<div class="item">
+											<img src="{% static 'v3/7.jpg' %}" alt="Third slide">
+											<div class="carousel-caption">标题 3</div>
+										</div>
+									</div>
+									<!-- 轮播（Carousel）导航 -->
+									<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+									    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+									    <span class="sr-only">Previous</span>
+									</a>
+									<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+									    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+									    <span class="sr-only">Next</span>
+									</a>
+								</div> 
+							</div>
+				</div>
+			</div>
+			<div class="row clearfix">
+				<div class="col-md-6 column">
+					<div class="jumbotron">
+						<h1>
+							自强不息  厚德载物
+						</h1>
+						<p>
+							西山苍苍，东海茫茫，吾校庄严，巍然中央，
+						</p>
+						<p>
+							东西文化，荟萃一堂，大同爰跻，祖国以光。
+						</p>
+						<p>
+							 <a class="btn btn-primary btn-large" href="#">了解更多</a>
+						</p>
+					</div>
+				</div>
+				<div class="col-md-6 column">
+					<div class="page-header">
+						<h1>
+							清华大学 <small>学生信息管理系统</small>
+						</h1>
+					</div>
+					<form class="form-horizontal" role="form" action="/my-login" method="post">
+						{%csrf_token%}
+						<div class="form-group">
+							 <label for="inputEmail3" class="col-sm-2 control-label">用户名</label>
+							<div class="col-sm-10">
+								<input type="text" name="myno" class="form-control" id="inputEmail3" />
+							</div>
+						</div>
+						<div class="form-group">
+							 <label for="inputPassword3" class="col-sm-2 control-label">密码</label>
+							<div class="col-sm-10">
+								<input type="password" name="mypassward" class="form-control" id="inputPassword3" />
+							</div>
+						</div>
+						<div class="form-group" id="app">
+							 <label for="inputEmail3" class="col-sm-2 control-label">我是</label>
+							 
+							 	
+							 		 <label><input type="radio" id="student" name="id" value="student" v-model="picked"/>学生</label>
+							 	
+							 	
+							 		 <label><input type="radio" id="teacher" name="id" value="teacher" v-model="picked"/>老师</label>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-offset-2 col-sm-10">
+								<div class="checkbox">
+									 <label><input type="checkbox" />记住密码</label>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-offset-2 col-sm-10">
+								 <input type="submit" value="Submit" class="btn btn-default">
+							</div>
+						</div>
+						{% if messages %}
+						    <script>
+						        {% for msg in messages %}
+						            alert('{{ msg.message }}');
+						        {% endfor %}
+						    </script>
+						{% endif %}
+					</form>
+					<div class="row clearfix">
+						<div class="col-md-4 column">
+							 <button type="button" onclick="window.location.href = '{% url 'sno' %}'" class="btn btn-block btn-link btn-default">学生注册</button>
+						</div>
+						<div class="col-md-4 column">
+							 <button type="button" onclick="window.location.href = '{% url 'tno' %}'" class="btn btn-block btn-link btn-default">老师注册</button>
+						</div>
+						<div class="col-md-4 column">
+							 <button type="button" onclick="window.location.href = '{% url 'sno' %}'" class="btn btn-block btn-link btn-default">忘记密码</button>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+		<script>
+			new Vue({
+			  el: '#app',
+			  data: {
+				picked : 'student'
+			  }
+			})
+			</script>
+	</body>
+</html>

@@ -1,0 +1,40 @@
+
+				{%extends "mybase.html" %}
+					{% block mainbody %}
+					<table class="table table-bordered table-hover">
+						<thead>
+							<tr>
+								<th>
+									课程号
+								</th>
+								<th>
+									课程名
+								</th>
+								<th>
+									学分
+								</th>
+								<th>
+									成绩
+								</th>
+								
+							</tr>
+						</thead>
+						<tbody>
+							{% for value in rlt.values %}
+								
+							    <tr>
+									{% for value1 in value.values %}
+							    
+							        
+									<td>{{ value1 }}</td>
+							    
+									{% endfor %}
+									
+							    </tr>
+								
+							{% endfor %}
+							
+							
+						</tbody>
+					</table>
+				{% endblock %}

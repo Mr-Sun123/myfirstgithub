@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="js/vue.js"></script>
+	<script type="text/javascript">
+	    function test() {
+	        $.ajax({
+	            url:"{% url 'home_page' %}",
+	            type: 'POST',
+	            contentType: 'application/json',  //设置请求头，注明编码格式
+	            data:{'sno':'4032017009'},         // 数据
+	            datatype: 'json',
+	            success: function (data) {
+	                alert(data)
+	            }
+	        })
+	    };
+	
+	</script>
+	<body>
+		<div class="container">
+			<div class="row clearfix">
+				<div class="col-md-3 column">
+					{% load static %}
+					<img alt="140x140" src="{% static 'v3/1.jpg' %}" />
+				</div>
+				<div class="col-md-9 column">
+					<div class="page-header">
+						<h1>
+							学生信息管理系统 <br><small>  Tsinghua university student information management system</small>
+							</h1>
+					</div>
+				</div>
+			</div>
+			<div class="row clearfix">
+				<div class="col-md-12 column">
+					<div class="panel panel-default">
+						<div class="panel panel-success">
+							<div class="panel-heading">
+								<h3 class="panel-title">课程号</h3>
+							</div>
+							<div class="panel-body">
+								{{rlt.cno}}
+							</div>
+						</div>
+						<div class="panel panel-info">
+							<div class="panel-heading">
+								<h3 class="panel-title">课程名</h3>
+							</div>
+							<div class="panel-body">
+								{{rlt.cname}}
+							</div>
+						</div>
+						<div class="panel panel-warning">
+							<div class="panel-heading">
+								<h3 class="panel-title">学分</h3>
+							</div>
+							<div class="panel-body">
+								{{rlt.ccredit}}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row clearfix">
+				<div class="col-md-6 column">
+					 <button type="button" onclick="window.location.href = '{% url 'ensure' rlt.sno rlt.cno %}'" class="btn btn-default btn-success btn-block">选修</button>
+				</div>
+				<div class="col-md-6 column">
+					 <button type="button" onclick="window.location.href = '{% url 'home_page' rlt.sno %}'" class="btn btn-default btn-block btn-primary">返回</button>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

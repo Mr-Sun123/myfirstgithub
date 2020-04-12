@@ -1,0 +1,44 @@
+
+				{%extends "teacher_base.html" %}
+					{% block mainbody %}
+					<table class="table table-bordered table-hover">
+						<thead>
+							<tr>
+								<th>
+									课程号
+								</th>
+								<th>
+									课程名
+								</th>
+								<th>
+									学分
+								</th>
+								<th>
+									填写成绩
+								</th>
+								
+							</tr>
+						</thead>
+						<tbody>
+							{% for value in rlt.values %}
+								
+							    <tr>
+									{% for value1 in value.values %}
+							    
+							        
+									<td>{{ value1 }}</td>
+							    
+									{% endfor %}
+									{% if not forloop.last %}
+									     
+									<!-- <p>{{ forloop.counter }}</p> -->
+									<td><a target="_top" class="playitbtn tryitbtnsyntax" target="_top" href="{% url 'scoring' rlt.tno value.cno %}">报录</a></td>
+									{% endif %}
+							    </tr>
+								
+							{% endfor %}
+							
+							
+						</tbody>
+					</table>
+				{% endblock %}

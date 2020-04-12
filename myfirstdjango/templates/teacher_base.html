@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="js/vue.js"></script>
+	
+	
+	<body>
+		<div class="container">
+			<div class="row clearfix">
+				<div class="col-md-3 column">
+					{% load static %}
+					<img alt="140x140" src="{% static 'v3/1.jpg' %}" />
+				</div>
+				<div class="col-md-9 column">
+					<div class="page-header">
+						<h1>
+							学生信息管理系统 <br><small>  Tsinghua university student information management system</small>
+						</h1>
+					</div>
+				</div>
+			</div>
+			<nav class="navbar navbar-default navbar-static-top" role="navigation">
+			<div class="row clearfix">
+				<div class="col-md-12 column">
+					
+					<ul class="nav navbar-nav">
+						<li class="active">
+							
+							 <a id="d1" href="{% url 'teacher_page' rlt.tno %}" >基本信息</a>
+							 
+							 
+						</li>
+						<li class="active">
+							 <a href="{% url 'teacher_scoring' rlt.tno %}">查看课程</a>
+						</li>
+						<li class="active">
+							 <a href="{% url 'login' %}">返回登录</a>
+						</li>
+						
+					</ul>
+					
+					</div>
+					</div>
+					</nav>
+					<div class="row clearfix">
+						<div class="col-md-12 column">
+					{% block mainbody %}
+					<table class="table table-bordered table-hover">
+						<thead>
+							<tr>
+								<th>
+									编号
+								</th>
+								<th>
+									产品
+								</th>
+								<th>
+									交付时间
+								</th>
+								<th>
+									状态
+								</th>
+								<th>
+									选择
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									1
+								</td>
+								<td>
+									TB - Monthly
+								</td>
+								<td>
+									01/04/2012
+								</td>
+								<td>
+									Default
+								</td>
+								<td>
+									<a target="_blank" class="playitbtn tryitbtnsyntax" href="">尝试一下</a>
+								</td>
+								
+							</tr>
+							<tr class="success">
+								<td>
+									1
+								</td>
+								<td>
+									TB - Monthly
+								</td>
+								<td>
+									01/04/2012
+								</td>
+								<td>
+									Approved
+								</td>
+								<td>
+									<a target="_blank" class="playitbtn tryitbtnsyntax" href="">尝试一下</a>
+								</td>
+							</tr>
+							<tr class="error">
+								<td>
+									2
+								</td>
+								<td>
+									TB - Monthly
+								</td>
+								<td>
+									02/04/2012
+								</td>
+								<td>
+									Declined
+								</td>
+								<td>
+									<a target="_blank" class="playitbtn tryitbtnsyntax" href="">尝试一下</a>
+								</td>
+							</tr>
+							<tr class="warning">
+								<td>
+									3
+								</td>
+								<td>
+									TB - Monthly
+								</td>
+								<td>
+									03/04/2012
+								</td>
+								<td>
+									Pending
+								</td>
+								<td>
+									<a target="_blank" class="playitbtn tryitbtnsyntax" href="">尝试一下</a>
+								</td>
+							</tr>
+							<tr class="info">
+								<td>
+									4
+								</td>
+								<td>
+									TB - Monthly
+								</td>
+								<td>
+									04/04/2012
+								</td>
+								<td>
+									Call in to confirm
+								</td>
+								<td>
+									<a target="_blank" class="playitbtn tryitbtnsyntax" href="https://www.baidu.com/">尝试一下</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					{% endblock %}
+				</div>
+			</div>
+		</div>
+		
+	</body>
+	
+	
+</html>
